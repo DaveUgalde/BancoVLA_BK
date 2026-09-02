@@ -1,0 +1,10 @@
+services:
+- type: web
+  name: bancovla-api
+  runtime: python
+  plan: free
+  region: oregon
+  branch: develop
+  autoDeploy: true
+  buildCommand: pip install -r requirements.txt
+  startCommand: gunicorn bancovla_api.wsgi:application
