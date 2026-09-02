@@ -1,32 +1,33 @@
 services:
-- type: web
-  name: bancovla-api
-  runtime: python
-  plan: free
-  region: oregon
-  branch: develop
-  autoDeploy: true
-  buildCommand: pip install -r requirements.txt
-  startCommand: gunicorn bancovla_api.wsgi:application
-  envVars:
-    DJANGO_SETTINGS_MODULE: bancovla_api.settings
-    -key: PYTHON_VERSION
-     value: 3.13.4
-    -key: ENVIRONMENT
-     value: develop
-    -key: AlGORITHM
-     value: HS256
-    -Key: ACCESS_TOKEN_EXPIRE_MINUTES
-     value: '30'
-    -key: DJANGO_SECRET_KEY
-     sync:false
-    -key: DATABASE_URL
-     sync:false
-    -key: SECRET_KEY
-     sync:false
-    -key: DEBUG
-     sync:false
-    -key: ALLOWED_HOSTS
-     sync:false
-    -key: CORS_ALLOWED_ORIGINS
-     sync:false
+  - type: web
+    name: bancovla-api
+    runtime: python
+    plan: free
+    region: oregon
+    branch: develop
+    autoDeploy: true
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn bancovla_api.wsgi:application --bind 0.0.0.0:$PORT
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: bancovla_api.settings
+      - key: PYTHON_VERSION
+        value: "3.13.4"
+      - key: ENVIRONMENT
+        value: develop
+      - key: ALGORITHM
+        value: HS256
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: "30"
+      - key: DJANGO_SECRET_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: SECRET_KEY
+        sync: false
+      - key: DEBUG
+        sync: false
+      - key: ALLOWED_HOSTS
+        sync: false
+      - key: CORS_ALLOWED_ORIGINS
+        sync: false
