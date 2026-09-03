@@ -30,7 +30,7 @@ def getAllUsers() -> list[etlUsuario.GetAllUsersModel]:
 
     try:
         cur = conn.cursor()
-        cur.execute("SELECT idUsuario, nombre, username, activo FROM usuario")
+        cur.execute("SELECT id_usuario, nombre, username, activo FROM usuario")
         rowsUser = cur.fetchall()
         cur.close()
 
@@ -53,7 +53,7 @@ def existUser(username:str) -> bool:
 
     try:
         cur = conn.cursor()
-        cur.execute("SELECT idUsuario FROM usuario WHERE username= %s", (username,))
+        cur.execute("SELECT id_usuario FROM usuario WHERE username= %s", (username,))
         result = cur.fetchone()
         cur.close()
 
@@ -69,7 +69,7 @@ def getUserByUsername(username:str)-> etlUsuario.UserAuthModel:
 
     try:
        cur = conn.cursor()
-       cur.execute("SELECT idUsuario, username, password, activo FROM usuario WHERE username = %s", (username,))
+       cur.execute("SELECT id_usuario, username, password, activo FROM usuario WHERE username = %s", (username,))
        result = cur.fetchone()
        cur.close()
 
