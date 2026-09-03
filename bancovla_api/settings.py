@@ -51,7 +51,7 @@ TEMPLATES = [
 STATIC_URL = "static/"
 
 SPECTACULAR_SETTINGS = {
-    "TITLE": "BancoVLA API",
+    "TITLE": "BancoVLA API David",
     "DESCRIPTION": "API de usuarios y autenticación del Banco VLA",
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,   
